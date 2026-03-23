@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Christian Okoeka | Portfolio</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(54, 88, 180, 0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(0, 200, 255, 0.12), transparent 24%),
+        linear-gradient(180deg, #07111f 0%, #0a1326 45%, #09101d 100%);
+      color: #f5f7fb;
+      line-height: 1.6;
+    }
+
+    a {
+      color: #7cc7ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    header {
+      background:
+        linear-gradient(135deg, rgba(10, 21, 46, 0.88), rgba(12, 37, 74, 0.76)),
+        linear-gradient(135deg, #101935, #162447);
+      padding: 90px 0 75px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      right: -80px;
+      top: -80px;
+      background: radial-gradient(circle, rgba(124, 199, 255, 0.22), transparent 65%);
+      filter: blur(8px);
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent, rgba(255,255,255,0.02));
+      pointer-events: none;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 7px 12px;
+      border: 1px solid rgba(124, 199, 255, 0.22);
+      border-radius: 999px;
+      background: rgba(124, 199, 255, 0.08);
+      color: #bfe5ff;
+      font-size: 0.88rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 4.6rem);
+      margin-bottom: 12px;
+      line-height: 1.05;
+    }
+
+    .hero p {
+      font-size: 1.08rem;
+      max-width: 720px;
+      color: #d6def0;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    nav {
+      background: rgba(8, 15, 31, 0.82);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(14px);
+    }
+
+    nav .container {
+      display: flex;
+      gap: 20px;
+      padding: 14px 0;
+      flex-wrap: wrap;
+    }
+
+    section {
+      padding: 55px 0;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 18px;
+      color: #ffffff;
+    }
+
+    .about p,
+    .contact p {
+      max-width: 800px;
+      color: #d6def0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(18, 27, 56, 0.94), rgba(12, 21, 44, 0.94));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 14px 34px rgba(0,0,0,0.24);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 42px rgba(0,0,0,0.28);
+      border-color: rgba(124, 199, 255, 0.25);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      color: #d6def0;
+      margin-bottom: 14px;
+      font-size: 0.98rem;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .skill {
+      background: rgba(24, 38, 77, 0.82);
+      color: #dce9ff;
+      padding: 9px 13px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px 0 40px;
+      color: #aeb9d2;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .button {
+      display: inline-block;
+      background: linear-gradient(135deg, #7cc7ff, #9be7ff);
+      color: #08111f;
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      margin-top: 0;
+      box-shadow: 0 10px 28px rgba(124, 199, 255, 0.2);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: #dce9ff;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: none;
+    }
+
+    .button:hover {
+      text-decoration: none;
+      opacity: 0.96;
+      transform: translateY(-1px);
+    }
+
+    .username-box {
+      margin-top: 22px;
+      padding: 16px 18px;
+      background: rgba(10, 18, 36, 0.72);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      max-width: 520px;
+    }
+
+    .username-box strong {
+      color: #bfe5ff;
+    }
+
+    @media (max-width: 700px) {
+      section {
+        padding: 44px 0;
+      }
+
+      nav .container {
+        gap: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container hero">
+      <div class="eyebrow">Cybersecurity • Coding • AI</div>
+      <h1>Christian Okoeka</h1>
+      <p>
+        Student focused on cybersecurity, coding, and AI. I am building real projects,
+        growing my technical skills, and learning how to create tools that solve actual problems.
+      </p>
+      <div class="hero-buttons">
+        <a class="button" href="#projects">View My Projects</a>
+        <a class="button secondary" href="#contact">Contact Me</a>
+      </div>
+      <div class="username-box">
+        <p><strong>Good username ideas:</strong> cokoeka-dev, christiancodes, christianbuiltit, christiancyber, cokoekacode</p>
+        <p><strong>Best mix of clean + cool:</strong> <span>cokoeka-dev</span></p>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="container">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section id="about" class="about">
+      <h2>About Me</h2>
+      <p>
+        I am a student interested in cybersecurity, software development, and artificial intelligence.
+        Right now, I am focused on learning by doing, which means building projects, practicing code,
+        and improving my understanding of how technology works in the real world. My goal is to keep
+        growing in tech and turn these skills into opportunities in cybersecurity and software.
+      </p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Password Strength Checker</h3>
+          <p>
+            A Python project that checks how strong a password is based on length, uppercase letters,
+            numbers, and symbols.
+          </p>
+          <a href="https://github.com/cokoeka-dev/password-strength-checker" target="_blank">View on GitHub</a>
+        </div>
+
+        <div class="card">
+          <h3>Python Practice</h3>
+          <p>
+            A collection of beginner Python exercises and small scripts that show my progress while learning.
+          </p>
+          <a href="https://github.com/cokoeka-dev/python-practice" target="_blank">View on GitHub</a>
+        </div>
+
+        <div class="card">
+          <h3>Future Phishing Detector</h3>
+          <p>
+            A planned cybersecurity project that will help detect suspicious links using simple logic and pattern checks.
+          </p>
+          <a href="https://github.com/cokoeka-dev" target="_blank">Coming Soon</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-list">
+        <span class="skill">Python</span>
+        <span class="skill">Cybersecurity Basics</span>
+        <span class="skill">HTML</span>
+        <span class="skill">CSS</span>
+        <span class="skill">GitHub</span>
+        <span class="skill">Problem Solving</span>
+        <span class="skill">AI Foundations</span>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <p>Email: cjokoeka@gmail.com</p>
+      <p>GitHub: <a href="https://github.com/cokoeka-dev" target="_blank">github.com/cokoeka-dev</a></p>
+      <p>LinkedIn: <a href="#">Add your LinkedIn later</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Christian Okoeka. Built to grow with my skills.</p>
+  </footer>
+</body>
+</html>
